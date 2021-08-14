@@ -41,7 +41,7 @@ mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
   codename: String,
-  passcode: String,
+  password: String,
   googleId: String,
   secret: String
 });
@@ -114,6 +114,14 @@ app.get("/chats", (req, res) =>{
   }
 })
 
+app.get("/hq", function(req, res){
+  if (req.isAuthenticated()){
+    res.render("hq", {_codename: req.body.codename, _TLS_ID: req.body.TLSID});
+  } else {
+    res.status(404).send('Bad Request: Not Found');
+  }
+});
+
 
 app.get("/submit", function(req, res){
   if (req.isAuthenticated()){
@@ -168,8 +176,8 @@ app.post("/register", function(req, res){
       res.locals.render("register");
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.locals.render("hq", {_codename: req.body.codename, _TLS_ID: req.body.TLSID});
-      });
+        res.redirect("/hq");
+            });
     }
   });
 
@@ -179,7 +187,7 @@ app.post("/login", function(req, res){
 
   const user = new User({
     username: req.body.codename,
-    passcode: req.body.passcode
+    password: req.body.passcode
   });
 
   req.login(user, function(err){
@@ -187,7 +195,7 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.locals.render("hq", {_codename: req.body.codename, _TLS_ID: req.body.TLSID});
+        res.redirect("/hq");
       });
     }
   });
