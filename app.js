@@ -15,7 +15,6 @@ const uri = "mongodb+srv://Admin:Admin@TLS@membersdb.cymfe.mongodb.net/myFirstDa
 
 const app = express();
 
-app.use(https);
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({
