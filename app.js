@@ -17,7 +17,7 @@ const app = express();
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
   extended: true
 }));
 
@@ -30,7 +30,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(uri, {useNewUrlParser: true});
+mongoose.connect(uri, {useNewUrlParser: true}, (err) => {
+  if(!err){
+    console.log("Connected to database.");
+  }else {
+    console.log(err);
+  }
+});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
@@ -194,6 +200,6 @@ app.post("/login", function(req, res){
 
 
 
-app.listen(port, function() {
-  console.log("Server started on port 3690.");
+app.listen(PORT, function() {
+  console.log(`Server started on port ${PORT}`);
 });
