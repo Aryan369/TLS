@@ -166,10 +166,10 @@ app.post("/register", function(req, res){
   User.register({username: req.body.codename}, req.body.passcode, function(err, user){
     if (err) {
       console.log(err);
-      res.render("register");
+      res.locals.render("register");
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.render("hq");
+        res.locals.render("hq", {_codename: req.body.codename, _TLS_ID: req.body.TLSID});
       });
     }
   });
@@ -188,7 +188,7 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.render("hq");
+        res.locals.render("hq", {_codename: req.body.codename, _TLS_ID: req.body.TLSID});
       });
     }
   });
