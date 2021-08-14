@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require("express");
-const bodyParser = require("body-parser");
+const https = require("https");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require('express-session');
@@ -15,6 +15,7 @@ const uri = "mongodb+srv://Admin:Admin@TLS@membersdb.cymfe.mongodb.net/myFirstDa
 
 const app = express();
 
+app.use(https);
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({
