@@ -40,6 +40,7 @@ mongoose.connect(uri, {useNewUrlParser: true}, (err) => {
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
+  tlsid: String,
   codename: String,
   password: String,
   googleId: String,
@@ -186,6 +187,7 @@ app.post("/register", function(req, res){
 app.post("/login", function(req, res){
 
   const user = new User({
+    tlsid: req.body.tlsid,
     username: req.body.codename,
     password: req.body.passcode
   });
