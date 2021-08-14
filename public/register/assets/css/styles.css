@@ -1,0 +1,27 @@
+.intro {
+}
+
+.map-clean {
+  text-align: center;
+}
+
+body {
+  background-color: rgb(37,37,37);
+}
+
+.hero {
+  text-align: center;
+}
+
+.logo {
+  pointer-events: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.login-dark {
+  background: transparent;
+}
+
