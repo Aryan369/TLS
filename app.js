@@ -176,6 +176,11 @@ app.post("/register", function(req, res){
       console.log(err);
       res.locals.render("register");
     } else {
+      //TLS_ID save
+      const tls_ID = req.body.tlsid;
+      user.TLS_ID = tls_ID;
+      user.save();
+
       passport.authenticate("local")(req, res, function(){
         res.redirect("/hq");
       });
