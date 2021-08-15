@@ -189,7 +189,7 @@ app.post("/register", function(req, res){
       res.locals.render("register");
     } else {
       //TLS_ID save
-      const tls_ID = `00${generateTLSID.generate(0,9)}`;
+      const tls_ID = generateTLSID.generate();
       user.TLS_ID = tls_ID;
       const codename = req.body.username;
       user.codename = codename;
