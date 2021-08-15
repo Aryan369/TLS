@@ -8,6 +8,8 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+const generateTLSID = require("./generateTLS_ID");
+
 
 const PORT = process.env.PORT || 3690;
 
@@ -187,7 +189,7 @@ app.post("/register", function(req, res){
       res.locals.render("register");
     } else {
       //TLS_ID save
-      const tls_ID = req.body.tlsid;
+      const tls_ID = `00${generateTLSID.generate(0,9)}`;
       user.TLS_ID = tls_ID;
       const codename = req.body.username;
       user.codename = codename;
@@ -222,6 +224,10 @@ app.post("/login", function(req, res){
 });
 
 
+app.get('/dev', (req, res) => {
+  res.send(`ID: 00${generateTLSID.generate(0,9)}`);
+
+})
 
 
 
