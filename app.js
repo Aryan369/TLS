@@ -117,7 +117,17 @@ app.get("/chats", (req, res) =>{
 
 app.get("/hq", function(req, res){
   if (req.isAuthenticated()){
-    res.render("hq", {_codename: req.body.username, _TLS_ID: req.body.tlsid});
+    User.findById(req.user.id, (err, foundUser) =>{
+      if(err){
+        console.log(err);
+      }else{
+        if(foundUser){
+          const codename = foundUser.username;
+          const tlsid = foundUser.TLS_ID;
+          res.render("hq", {_codename: codename, _TLS_ID: tlsid});
+        }
+      }
+    });
   } else {
     res.status(404).send('Bad Request: Not Found');
   }
