@@ -17,10 +17,6 @@ let array = generateID(0, 9)
 
 function generate() {
     let id;
-
-    if(array.length == 0){
-        console.log("Increase ")
-    }
     let randomIndex = random(0, array.length-1);
     let randomNumber = array[randomIndex];
     array.splice(randomIndex, 1);
