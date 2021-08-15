@@ -117,7 +117,7 @@ app.get("/chats", (req, res) =>{
 
 app.get("/hq", function(req, res){
   if (req.isAuthenticated()){
-    res.render("hq", {_codename: req.body.codename, _TLS_ID: req.body.TLSID});
+    res.render("hq", {_codename: req.body.username, _TLS_ID: req.body.tlsid});
   } else {
     res.status(404).send('Bad Request: Not Found');
   }
@@ -171,7 +171,7 @@ app.post("/homepage", function(req, res){
 
 app.post("/register", function(req, res){
 
-  User.register({username: req.body.codename}, req.body.passcode, function(err, user){
+  User.register({username: req.body.username}, req.body.password, function(err, user){
     if (err) {
       console.log(err);
       res.locals.render("register");
@@ -188,8 +188,8 @@ app.post("/login", function(req, res){
 
   const user = new User({
     tlsid: req.body.tlsid,
-    username: req.body.codename,
-    password: req.body.passcode
+    username: req.body.uername,
+    password: req.body.password
   });
 
   req.login(user, function(err){
