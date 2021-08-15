@@ -225,8 +225,7 @@ app.post("/login", function(req, res){
 
 
 app.get('/dev', (req, res) => {
-  res.send(`ID: 00${generateTLSID.generate(0,9)}`);
-
+  res.send(`ID: ${generateTLSID.generate()}`);
 })
 
 
