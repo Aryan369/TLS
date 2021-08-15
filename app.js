@@ -122,7 +122,7 @@ app.get("/hq", function(req, res){
         console.log(err);
       }else{
         if(foundUser){
-          const codename = foundUser.username;
+          const codename = foundUser.codename;
           const tlsid = foundUser.TLS_ID;
           res.render("hq", {_codename: codename, _TLS_ID: tlsid});
         }
@@ -189,6 +189,8 @@ app.post("/register", function(req, res){
       //TLS_ID save
       const tls_ID = req.body.tlsid;
       user.TLS_ID = tls_ID;
+      const codename = req.body.username;
+      user.codename = codename;
       user.save();
 
       passport.authenticate("local")(req, res, function(){
