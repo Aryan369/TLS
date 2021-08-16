@@ -82,8 +82,8 @@ passport.use(new GoogleStrategy({
 ));
 
 app.get("/", function(req, res){
-  res.render("hq", {_codename: "dev", _rank: "dev" , _TLS_ID: "dev"});
-  //res.render("homepage");
+  //res.render("hq", {_codename: "dev", _rank: "dev" , _TLS_ID: "dev"});
+  res.render("homepage");
 });
 
 app.get("/auth/google",
