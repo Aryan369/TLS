@@ -15,21 +15,49 @@ function generateID(min, max){
 
 let array = generateID(0, 9)
 
+function seqindex(max){
+    let ID_index = [];
+
+    for(let i = 0 ; i <= max-1; i++){
+        array.push(i);
+    }
+    
+    return ID_index;
+}
+
+let indexArray = seqindex(array.length);
+
 function generate() {
     let id;
-    let randomIndex = random(0, array.length-1);
-    let randomNumber = array[randomIndex];
-    array.splice(randomIndex, 1);
-    randomNumber = randomNumber.toString();
 
-    if(randomNumber.length == 1){
-        id = `00${randomNumber}`;
-    } else if(randomNumber.length ==2){
-        id = `0${randomNumber}`;
+    //Random ID
+    //let randomIndex = random(0, array.length-1);
+    //let randomNumber = array[randomIndex];
+    //array.splice(randomIndex, 1);
+    //randomNumber = randomNumber.toString();
+
+    //if(randomNumber.length == 1){
+    //    id = `00${randomNumber}`;
+    //} else if(randomNumber.length ==2){
+    //    id = `0${randomNumber}`;
+    //} else{
+    //    id = randomNumber;
+    //}
+
+    //Sequential ID
+    let index = indexArray[0];
+    indexArray.splice(0, 1);
+    let indexNumber = index.toString();
+
+    if(indexNumber.length == 1){
+        id = `00${indexNumber}`;
+    } else if(indexNumber.length ==2){
+        id = `0${indexNumber}`;
     } else{
-        id = randomNumber;
+        id = indexNumber;
     }
-
+    
+    
     return id;
 }
 
