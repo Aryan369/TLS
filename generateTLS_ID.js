@@ -13,16 +13,16 @@ function generateID(min, max){
     return array;
 }
 
-let array = generateID(0, 9)
+let array = generateID(0, 999);
 
 function seqindex(max){
-    let ID_index = [];
+    let IDindex = [];
 
     for(let i = 0 ; i <= max-1; i++){
-        array.push(i);
+        IDindex.push(i);
     }
     
-    return ID_index;
+    return IDindex;
 }
 
 let indexArray = seqindex(array.length);
@@ -45,19 +45,19 @@ function generate() {
     //}
 
     //Sequential ID
-    let index = indexArray[0];
+    let index = indexArray[1];
     indexArray.splice(0, 1);
     let indexNumber = index.toString();
 
     if(indexNumber.length == 1){
         id = `00${indexNumber}`;
-    } else if(indexNumber.length ==2){
+    } else if(indexNumber.length == 2){
         id = `0${indexNumber}`;
     } else{
         id = indexNumber;
     }
     
-    
+
     return id;
 }
 
