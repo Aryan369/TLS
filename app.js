@@ -126,7 +126,20 @@ app.get("/hq", function(req, res){
         if(foundUser){
           const codename = foundUser.codename;
           const tlsid = foundUser.TLS_ID;
-          res.render("hq", {_codename: codename, _TLS_ID: tlsid});
+          let rank = "";
+
+          //Rank
+          if(tlsid == 1){
+            rank = "Leader";
+          }else if(tlsid == 2){
+            rank = "Co-Leader";
+          }else if(tlsid > 2 && tlsid < 10){
+            rank = "ELite";
+          }else {
+            rank = "Member";
+          }
+
+          res.render("hq", {_codename: codename, _rank: rank , _TLS_ID: tlsid});
         }
       }
     });
