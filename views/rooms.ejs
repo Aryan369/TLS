@@ -35,30 +35,23 @@
             <h1 class="pulse animated" style="font-family: 'Encode Sans SC', sans-serif;">The Modern Secret Society</h1>
         </div>
     </header>
-    <header class="header-dark" style="background: url(&quot;https://source.unsplash.com/random/?beach&quot;) no-repeat;height: 100vh;width: 100vw;background-size: cover;padding-top: 90px;">
+    <div class="header-dark" style="background: url(&quot;https://source.unsplash.com/random/?beach&quot;) no-repeat;height: 100vh;width: 100vw;background-size: cover;padding-top: 90px;">
         <h1 class="text-center" data-aos="zoom-in-up" data-aos-duration="600" style="font-size: 62px;width: 100%;color: rgb(255,255,255);text-align: center;font-family: 'Julius Sans One', sans-serif;margin-bottom: 21px;">TLS&nbsp;</h1>
-        <section class="chat_section" bss-parallax-bg="true" style="height: 367px;background: url(&quot;https://unsplash.it/1800/900?image=1045&quot;) center / cover;width: 680px;margin: 0;margin-right: auto;margin-left: auto;margin-bottom: 0;filter: blur(0px);border-radius: 6px;">
+        <section data-aos="zoom-in-up" data-aos-duration="600" class="chat_section" bss-parallax-bg="true" style="height: 367px;background: url(&quot;https://unsplash.it/1800/900?image=1045&quot;) center / cover;width: 680px;margin: 0;margin-right: auto;margin-left: auto;margin-bottom: 0;filter: blur(0px);border-radius: 6px;">
             <div class="row visible">
                 <div class="msg_area col">
-                    <div class="msg incoming">
-                        <h4>USER</h4>
-                        <p class="msg_in">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, quas.</p>
-                    </div>
-
-                    <div class="msg outgoing">
-                        <h4>USER</h4>
-                        <p class="msg_out">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, quas.</p>
-                    </div>
-                </div>
-                <div class="col-md-12" style="margin-top: 5px;">
-                    <div class="input-group">
-                        <textarea class="form-control" id="textarea_inp" cols="30" rows="1" placeholder="Send a message . . ." style="resize: none; border-radius: 6px 0px 0px 6px;"></textarea>
-                        <button class="btn btn-dark text-start" type="submit" style="border-radius: 0px 6px 6px 0px;"><i class="icon ion-android-send" style="color: rgb(255,255,255);"></i></button></div>
+                    <h1 id="test">test</h1>
                 </div>
             </div>
         </section>
+        <div data-aos="zoom-in-up" data-aos-duration="600" class="col-md-6" style="margin: 5px auto 0px;">
+            <div class="input-group">
+                <textarea class="form-control" id="textarea" cols="30" rows="1" placeholder="Send a message . . ." style="resize: none; border-radius: 6px 0px 0px 6px;"></textarea>
+                <button class="btn btn-dark text-start" type="button" id="sendBtn" style="border-radius: 0px 6px 6px 0px;"><i class="icon ion-android-send" style="color: rgb(255,255,255);"></i></button>
+            </div>
+        </div>
         
-    </header>
+    </div>
     <section class="map-clean" style="background: rgb(133,133,133);border-style: solid;border-color: var(--bs-indigo);border-top-style: none;border-top-color: rgb(255,255,255);border-right-style: none;border-bottom-style: none;border-left-style: none;border-left-color: rgb(255,255,255);">
         <footer class="footer-dark" style="background: rgb(0,0,0);margin-top: 0;">
             <div class="container"><img src="/rooms/assets/img/©%20Copyright%20by%20TLS%202021..png" style="color: var(--bs-gray);"></div>
@@ -66,7 +59,6 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/rooms/assets/js/bs-init.js"></script>
-    <script src="/rooms/assets/js/client.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 </body>

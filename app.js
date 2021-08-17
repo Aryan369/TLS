@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require("express");
-const https = require("https");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require('express-session');
@@ -16,6 +15,7 @@ const PORT = process.env.PORT || 3690;
 const uri = "mongodb+srv://Admin:Admin@TLS@membersdb.cymfe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 const app = express();
+const http = require("http").createServer(app);
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -82,8 +82,8 @@ passport.use(new GoogleStrategy({
 ));
 
 app.get("/", function(req, res){
-  //res.render("hq", {_codename: "dev", _rank: "dev" , _TLS_ID: "dev"});
-  res.render("homepage");
+  res.render("hq", {_codename: "dev", _rank: "dev" , _TLS_ID: "dev"});
+  //res.render("homepage");
 });
 
 app.get("/auth/google",
@@ -110,12 +110,12 @@ app.get("/secrets", function(req, res){
 });
 
 //Chats
-app.get("/chats", (req, res) =>{
-  if (req.isAuthenticated()){
-    res.render("chats");
-  } else {
-    res.redirect("/login");
-  }
+app.get("/rooms", (req, res) =>{
+  //if (req.isAuthenticated()){
+    res.sendFile(`${__dirname}/room.html`);
+  //} else {
+  //  res.status(404).send('Bad Request: Not Found');
+  //}
 })
 
 app.get("/hq", function(req, res){
@@ -209,6 +209,9 @@ app.post("/register", function(req, res){
       user.codename = codename;
       user.save();
 
+      //INFO
+      client_codename = user.codename;
+
       passport.authenticate("local")(req, res, function(){
         res.redirect("/hq");
       });
@@ -230,22 +233,26 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
+        //INFO
+        client_codename = user.codename;
+
         res.redirect("/hq");
       });
     }
   });
-
 });
 
 
 app.get('/dev', (req, res) => {
   res.send(`ID: ${generateTLSID.generate()}`);
+  
 })
 
 
+//INFO
+let client_codename;
+module.exports = client_codename;
 
-
-
-app.listen(PORT, function() {
+http.listen(PORT, function() {
   console.log(`Server started on port ${PORT}`);
 });

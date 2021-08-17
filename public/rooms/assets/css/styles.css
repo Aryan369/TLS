@@ -51,13 +51,13 @@ body {
   font-size: 14px;
 }
 
-.msg_in {
+.in {
   background-color: #e2eaeb;
   border-radius: 6px;
   padding: 16px;
 }
 
-.msg_out {
+.out {
   background-color: #ebeff0;
   border-radius: 6px;
   padding: 16px;

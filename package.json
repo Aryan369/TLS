@@ -1,5 +1,5 @@
 {
-  "name": "Secrets",
+  "name": "THELIGHTSYSTEM",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "app": "nodemon app.js"
+    "app": "nodemon app"
   },
   "keywords": [],
   "author": "TheLightSystem",
