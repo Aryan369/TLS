@@ -1,0 +1,33 @@
+.line-with-icon-divider {
+  background: inherit;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+}
+
+.line-span {
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.line-span:before, .line-span:after {
+  content: '';
+  width: 200px;
+  transform: translateY( 9px );
+  height: 2px;
+  background: #ccc;
+  position: absolute;
+}
+
+.line-span:before {
+  right: 100%;
+}
+
+.line-span:after {
+  left: 100%;
+}
+
