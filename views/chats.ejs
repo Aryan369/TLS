@@ -2,101 +2,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Light System</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap-social.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #F8F8F8;
-    font-family: 'Roboto', sans-serif;
-}
-section.chat__section {
-    width: 800px;
-    max-width: 90%;
-    background: #fff;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-.brand {
-    padding: 20px;
-    background: #f1f1f1;
-    display: flex;
-    align-items: center;
-}
-.brand h1 {
-    text-transform: uppercase;
-    font-size: 20px;
-    color: #444;
-    margin-left: 10px;
-}
-.message__area{
-    height: 500px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding-top: 40px;
-}
-textarea {
-    width: 100%;
-    border: none;
-    padding: 20px;
-    font-size: 16px;
-    outline: none;
-    background: #FBFBFB;
-}
-
-.message {
-    padding: 20px; 
-    border-radius: 4px; 
-    margin-bottom: 40px;
-    max-width: 300px;
-    position: relative;
-}
-.incoming {
-    background: #8F8BE8;
-    color: #fff;  
-}
-.outgoing {
-    background: #e9eafd;
-    color: #787986;
-    margin-left: auto;
-}
-.message h4 {
-    position: absolute;
-    top: -20px;
-    left: 0;
-    color: #333;
-    font-size: 14px;
-}
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>TLS Room</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Encode+Sans+SC&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Julius+Sans+One&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Features-Boxed.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="assets/css/Icon-Centered-Between-Lines.css">
+    <link rel="stylesheet" href="assets/css/Map-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-    <section class="chat__section">
-        <div class="brand">
-            <h1>The Light System</h1>
+    <header class="header-dark" style="background: url(&quot;https://source.unsplash.com/random/2160x1920/?minimal&quot;) no-repeat;height: 100vh;width: 100vw;background-size: cover;">
+        <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
+            <div class="container"><a class="navbar-brand pulse animated" style="font-size: 25px;text-align: center;font-weight: light;font-family: 'Julius Sans One', sans-serif;" href="#">THE LIGHT SYSTEM</a>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav"></ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container hero" style="margin-top: 102px;margin-left: 30px;"><img class="rubberBand animated logo" src="assets/img/Logo.png" style="margin-top: 0px;">
+            <h1 class="pulse animated" style="font-family: 'Encode Sans SC', sans-serif;">The Modern Secret Society</h1>
         </div>
-        <div class="message__area"></div>
-        <div>
-            <input type="text" id="inpMsg" placeholder="Send a message">
-            <button class="btn" type="submit">Send</button>
+    </header>
+    <header class="header-dark" style="background: url(&quot;https://source.unsplash.com/random/2160x1920/?nature&quot;) no-repeat;height: 100vh;width: 100vw;background-size: cover;padding-top: 90px;">
+        <h1 class="text-center" data-aos="zoom-in-up" data-aos-duration="600" style="font-size: 62px;width: 100%;color: rgb(255,255,255);text-align: center;font-family: 'Julius Sans One', sans-serif;margin-bottom: 21px;">TLS&nbsp;</h1>
+        <div data-bss-parallax-bg="true" style="height: 367px;background: url(&quot;https://unsplash.it/1800/900?image=1045&quot;) center / cover;width: 680px;margin: 0;margin-right: auto;margin-left: auto;margin-bottom: 0;filter: blur(0px);border-radius: 6px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row visible">
+                <div class="col">
+                    <h1>h1</h1>
+                    <p>p1</p>
+                </div>
+                <div class="col-md-12" style="margin-top: 234px;">
+                    <div class="input-group"><input class="form-control" type="text" placeholder="Send a message . . ." style="border-radius: 6px 0px 0px 6px;"><button class="btn btn-dark text-start" type="submit" style="border-radius: 0px 6px 6px 0px;"><i class="icon ion-android-send" style="color: rgb(255,255,255);"></i></button></div>
+                </div>
+            </div>
         </div>
+    </header>
+    <section class="map-clean" style="background: rgb(133,133,133);border-style: solid;border-color: var(--bs-indigo);border-top-style: none;border-top-color: rgb(255,255,255);border-right-style: none;border-bottom-style: none;border-left-style: none;border-left-color: rgb(255,255,255);">
+        <footer class="footer-dark" style="background: rgb(0,0,0);margin-top: 0;">
+            <div class="container"><img src="assets/img/©%20Copyright%20by%20TLS%202021..png" style="color: var(--bs-gray);"></div>
+        </footer>
     </section>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/client.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 </body>
 
 </html>
