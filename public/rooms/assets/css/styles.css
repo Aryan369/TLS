@@ -22,6 +22,8 @@ body {
 }
 
 .msg_area {
+  padding: 16px;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -29,6 +31,7 @@ body {
 
 .msg {
   max-width: 300px;
+  border-radius: 6px;
 }
 
 .incoming {
@@ -39,5 +42,23 @@ body {
 .outgoing {
   float: right;
   clear: both;
+  margin-left: auto;
 }
 
+.msg h4 {
+  color: whitesmoke;
+  padding-left: 8px;
+  font-size: 14px;
+}
+
+.msg_in {
+  background-color: #e2eaeb;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.msg_out {
+  background-color: #ebeff0;
+  border-radius: 6px;
+  padding: 16px;
+}
