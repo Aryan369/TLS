@@ -21,3 +21,23 @@ body {
   -ms-user-select: none;
 }
 
+.msg_area {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.msg {
+  max-width: 300px;
+}
+
+.incoming {
+  float: left;
+  clear: both;
+}
+
+.outgoing {
+  float: right;
+  clear: both;
+}
+
