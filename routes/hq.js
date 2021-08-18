@@ -6,7 +6,7 @@ const findOrCreate = require('mongoose-findorcreate');
 
 const router = app.Router();
 
-router.get("/hq", function(req, res){
+router.get("/", function(req, res){
     if (req.isAuthenticated()){
         User.findById(req.user.id, (err, foundUser) =>{
             if(err){

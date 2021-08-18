@@ -7,7 +7,7 @@ router.get("/", function(req, res){
     res.render("homepage");
 });
 
-router.post("/homepage", function(req, res){
+router.post("/", function(req, res){
     if(req.body.homepageInp == process.env.REGISTER_CODE){
         res.render("register");
     }else if(req.body.homepageInp == process.env.LOGIN_CODE){

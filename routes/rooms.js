@@ -2,7 +2,7 @@ const app = require("express");
 
 const router = app.Router();
 
-router.get("/rooms", (req, res) =>{
+router.get("/", (req, res) =>{
     //if (req.isAuthenticated()){
     res.sendFile(`${__dirname}/room.html`);
     //} else {
