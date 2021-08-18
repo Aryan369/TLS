@@ -88,7 +88,10 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-app.use("/", HomepageRoute);
+app.get("/", function(req, res){
+  res.render("hq", {_codename: "dev", _rank: "dev" , _TLS_ID: "dev"});
+  //res.render("homepage");
+});
 
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
@@ -114,9 +117,44 @@ app.get("/secrets", function(req, res){
 });
 
 //Chats
-app.use("/rooms", RoomsRoute);
+app.get("/rooms", (req, res) =>{
+  //if (req.isAuthenticated()){
+    res.sendFile(`${__dirname}/room.html`);
+  //} else {
+  //  res.status(404).send('Bad Request: Not Found');
+  //}
+})
 
-app.use("/hq", HQRoute);
+app.get("/hq", function(req, res){
+  if (req.isAuthenticated()){
+    User.findById(req.user.id, (err, foundUser) =>{
+      if(err){
+        console.log(err);
+      }else{
+        if(foundUser){
+          const codename = foundUser.codename;
+          const tlsid = foundUser.TLS_ID;
+          let rank = "";
+
+          //Rank
+          if(tlsid == 1){
+            rank = "Leader";
+          }else if(tlsid == 2){
+            rank = "Co-Leader";
+          }else if(tlsid > 2 && tlsid < 10){
+            rank = "ELite";
+          }else {
+            rank = "Member";
+          }
+
+          res.render("hq", {_codename: codename, _rank: rank , _TLS_ID: tlsid});
+        }
+      }
+    });
+  } else {
+    res.status(404).send('Bad Request: Not Found');
+  }
+});
 
 
 app.get("/submit", function(req, res){
@@ -147,7 +185,10 @@ app.post("/submit", function(req, res){
   });
 });
 
-app.use("/logout", LogoutRoute);
+app.get("/logout", function(req, res){
+  req.logout();
+  res.redirect("/");
+});
 
 //Post
 app.post("/homepage", function(req, res){
