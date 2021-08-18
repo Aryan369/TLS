@@ -9,7 +9,7 @@ let sendbtn = document.querySelector("#sendbtn");
 
 let _msg = textarea.value;
 
-prompt("Alert");
+var ans = prompt("Alert");
 
 textarea.addEventListener("keyup", (e) => {
     if(e.key === 'Enter'){

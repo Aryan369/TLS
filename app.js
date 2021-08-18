@@ -9,6 +9,13 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const generateTLSID = require("./generateTLS_ID");
 
+//Routes
+const HomepageRoute = require("./routes/homepage");
+const HQRoute = require("./routes/hq");
+const RegisterRoute = require("./routes/register");
+const LoginRoute = require("./routes/login");
+const LogoutRoute = require("./routes/logout");
+const RoomsRoute = require("./routes/rooms");
 
 const PORT = process.env.PORT || 3690;
 
