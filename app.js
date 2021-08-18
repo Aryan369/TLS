@@ -88,10 +88,7 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-app.get("/", function(req, res){
-  res.render("hq", {_codename: "dev", _rank: "dev" , _TLS_ID: "dev"});
-  //res.render("homepage");
-});
+app.use("/", HomepageRoute);
 
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
@@ -117,13 +114,7 @@ app.get("/secrets", function(req, res){
 });
 
 //Chats
-app.get("/rooms", (req, res) =>{
-  //if (req.isAuthenticated()){
-    res.sendFile(`${__dirname}/room.html`);
-  //} else {
-  //  res.status(404).send('Bad Request: Not Found');
-  //}
-})
+app.use("/rooms", RoomsRoute);
 
 app.use("/hq", HQRoute);
 
@@ -156,10 +147,7 @@ app.post("/submit", function(req, res){
   });
 });
 
-app.get("/logout", function(req, res){
-  req.logout();
-  res.redirect("/");
-});
+app.use("/logout", LogoutRoute);
 
 //Post
 app.post("/homepage", function(req, res){
