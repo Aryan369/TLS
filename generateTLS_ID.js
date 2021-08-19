@@ -61,4 +61,6 @@ function generate() {
     return id;
 }
 
-module.exports = {generate};
+const rootDir = __dirname;
+
+module.exports = {generate, rootDir};

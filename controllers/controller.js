@@ -6,6 +6,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const generateTLSID = require("../generateTLS_ID");
 const User = require("../models/users");
+const rootDir = generateTLSID.rootDir;
 
 passport.use(User.createStrategy());
 
@@ -138,7 +139,8 @@ const Logout = (req, res) => {
 const Rooms = {
     Get: (req, res) => {
         //if (req.isAuthenticated()){
-        res.sendFile(`${__dirname}/room.html`);
+        //res.sendFile(`${rootDir}/room.html`);
+        res.render("rooms");
         //} else {
         //  res.status(404).send('Bad Request: Not Found');
         //}
