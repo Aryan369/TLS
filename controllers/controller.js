@@ -46,9 +46,13 @@ const Homepage = {
         }else if(req.body.homepageInp == process.env.LOGIN_CODE){
             res.render("login");
         }else{
-            res.redirect("https://google.com");
+            res.redirect("/homepageContact");
         }
     }
+}
+
+const HomepageContact = (req, res) => {
+    res.render("homepageContact");
 }
 
 const HQ = (req, res) => {
@@ -141,4 +145,4 @@ const Rooms = {
     }
 }
 
-module.exports = {Homepage, HQ, Register, Login, Logout, Rooms};
+module.exports = {Homepage, HomepageContact, HQ, Register, Login, Logout, Rooms};

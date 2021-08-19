@@ -11,6 +11,7 @@ const User = require("./models/users");
 
 //Routes
 const HomepageRoute = require("./routes/homepage");
+const HomepageContactRoute = require("./routes/homepageContact");
 const HQRoute = require("./routes/hq");
 const RegisterRoute = require("./routes/register");
 const LoginRoute = require("./routes/login");
@@ -65,6 +66,7 @@ app.get("/auth/google/secrets",
 //REQUESTS
 app.use("/", HomepageRoute);
 
+app.use("/homepageContact", HomepageContactRoute);
 
 app.get("/secrets", function(req, res){
   User.find({"secret": {$ne: null}}, function(err, foundUsers){
@@ -123,11 +125,10 @@ app.use("/login", LoginRoute);
 
 app.get('/dev', (req, res) => {
   res.send(`ID: ${generateTLSID.generate()}`);
-
 })
 
 
-//INFO
+//INFO FOR ROOMS
 let client_codename;
 module.exports = client_codename;
 
