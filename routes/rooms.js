@@ -1,13 +1,8 @@
 const app = require("express");
+const controller = require("../controllers/controller");
 
 const router = app.Router();
 
-router.get("/", (req, res) =>{
-    //if (req.isAuthenticated()){
-    res.sendFile(`${__dirname}/room.html`);
-    //} else {
-    //  res.status(404).send('Bad Request: Not Found');
-    //}
-})
+router.get("/", controller.Rooms.Get)
 
 module.exports = router;

@@ -4,10 +4,10 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require('express-session');
 const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const generateTLSID = require("./generateTLS_ID");
+const User = require("./models/users");
 
 //Routes
 const HomepageRoute = require("./routes/homepage");
@@ -19,7 +19,7 @@ const RoomsRoute = require("./routes/rooms");
 
 const PORT = process.env.PORT || 3690;
 
-const uri = "mongodb+srv://Admin:Admin@TLS@membersdb.cymfe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = process.env.DB;
 
 const app = express();
 const http = require("http").createServer(app);
@@ -48,50 +48,9 @@ mongoose.connect(uri, {useNewUrlParser: true}, (err) => {
 });
 mongoose.set("useCreateIndex", true);
 
-const userSchema = new mongoose.Schema ({
-  TLS_ID: String,
-  codename: String,
-  password: String,
-  googleId: String,
-  secret: String
-});
 
-userSchema.plugin(passportLocalMongoose);
-userSchema.plugin(findOrCreate);
-
-const User = new mongoose.model("User", userSchema);
-
-passport.use(User.createStrategy());
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
-passport.use(new GoogleStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets",
-    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
-
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
-
-app.get("/", function(req, res){
-  res.render("hq", {_codename: "dev", _rank: "dev" , _TLS_ID: "dev"});
-  //res.render("homepage");
-});
+//REQUESTS
+app.use("/", HomepageRoute);
 
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
@@ -117,45 +76,9 @@ app.get("/secrets", function(req, res){
 });
 
 //Chats
-app.get("/rooms", (req, res) =>{
-  //if (req.isAuthenticated()){
-    res.sendFile(`${__dirname}/room.html`);
-  //} else {
-  //  res.status(404).send('Bad Request: Not Found');
-  //}
-})
+app.use("/rooms", RoomsRoute)
 
-app.get("/hq", function(req, res){
-  if (req.isAuthenticated()){
-    User.findById(req.user.id, (err, foundUser) =>{
-      if(err){
-        console.log(err);
-      }else{
-        if(foundUser){
-          const codename = foundUser.codename;
-          const tlsid = foundUser.TLS_ID;
-          let rank = "";
-
-          //Rank
-          if(tlsid == 1){
-            rank = "Leader";
-          }else if(tlsid == 2){
-            rank = "Co-Leader";
-          }else if(tlsid > 2 && tlsid < 10){
-            rank = "ELite";
-          }else {
-            rank = "Member";
-          }
-
-          res.render("hq", {_codename: codename, _rank: rank , _TLS_ID: tlsid});
-        }
-      }
-    });
-  } else {
-    res.status(404).send('Bad Request: Not Found');
-  }
-});
-
+app.use("/hq", HQRoute);
 
 app.get("/submit", function(req, res){
   if (req.isAuthenticated()){
@@ -185,74 +108,19 @@ app.post("/submit", function(req, res){
   });
 });
 
-app.get("/logout", function(req, res){
-  req.logout();
-  res.redirect("/");
-});
+app.use("/logout", LogoutRoute);
 
 //Post
-app.post("/homepage", function(req, res){
-  if(req.body.homepageInp == process.env.REGISTER_CODE){
-    res.render("register");
-  }else if(req.body.homepageInp == process.env.LOGIN_CODE){
-    res.render("login");
-  }else{
-    res.redirect("https://google.com");
-  }
-});
+app.use("/homepage", HomepageRoute);
 
+app.use("/register", RegisterRoute);
 
-app.post("/register", function(req, res){
-
-  User.register({username: req.body.username}, req.body.password, function(err, user){
-    if (err) {
-      console.log(err);
-      res.locals.render("register");
-    } else {
-      //TLS_ID save
-      const tls_ID = generateTLSID.generate();
-      user.TLS_ID = tls_ID;
-      const codename = req.body.username;
-      user.codename = codename;
-      user.save();
-
-      //INFO
-      client_codename = user.codename;
-
-      passport.authenticate("local")(req, res, function(){
-        res.redirect("/hq");
-      });
-    }
-  });
-
-});
-
-app.post("/login", function(req, res){
-
-  const user = new User({
-    TLS_ID: req.body.tlsid,
-    username: req.body.username,
-    password: req.body.password
-  });
-
-  req.login(user, function(err){
-    if (err) {
-      console.log(err);
-    } else {
-      passport.authenticate("local")(req, res, function(){
-        //INFO
-        client_codename = user.codename;
-
-        res.redirect("/hq");
-      });
-    }
-  });
-});
+app.use("/login", LoginRoute);
 
 
 app.get('/dev', (req, res) => {
   res.send(`ID: ${generateTLSID.generate()}`);
-  
+
 })
 
 

@@ -1,10 +1,8 @@
 const app = require("express");
+const controller = require("../controllers/controller");
 
 const router = app.Router();
 
-router.get("/", function(req, res){
-    req.logout();
-    res.redirect("/");
-});
+router.get("/", controller.Logout);
 
 module.exports = router;
