@@ -48,10 +48,7 @@ mongoose.connect(uri, {useNewUrlParser: true}, (err) => {
 });
 mongoose.set("useCreateIndex", true);
 
-
-//REQUESTS
-app.use("/", HomepageRoute);
-
+//Passport
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
 );
@@ -61,7 +58,13 @@ app.get("/auth/google/secrets",
   function(req, res) {
     // Successful authentication, redirect to secrets.
     res.redirect("/secrets");
-  });
+});
+
+
+
+//REQUESTS
+app.use("/", HomepageRoute);
+
 
 app.get("/secrets", function(req, res){
   User.find({"secret": {$ne: null}}, function(err, foundUsers){
