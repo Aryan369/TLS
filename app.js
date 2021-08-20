@@ -37,7 +37,7 @@ const io = require("socket.io")(http, {
 const users = {};
 
 io.on('connection', socket => {
-    io.to(users[socket.id]).emit('get-codename', client_codename);
+    //io.to(users[socket.id]).emit('get-codename', client_codename);
 
     socket.on('new-user-joined', codename => {
         users[socket.id] = codename;
@@ -47,6 +47,11 @@ io.on('connection', socket => {
     socket.on('send-chat-message', msg => {
         socket.broadcast.emit('chat-message' ,msg);
     });
+
+    socket.on('disconnect', message => {
+      socket.broadcast.emit('member-left', users[socket.id]);
+      delete users[socket.id];
+    })
 });
 
 

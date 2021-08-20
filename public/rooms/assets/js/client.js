@@ -14,7 +14,11 @@ JoinedMsg("You");
 socket.emit('new-user-joined', codename);
 
 socket.on('member-joined', codeName => {
-    JoinedMsg(codeName);
+    JoiningMsg(codeName, "joined");
+});
+
+socket.on('member-left', codeName => {
+    JoiningMsg(codeName, "left");
 });
 
 
@@ -68,12 +72,12 @@ function appendMsg(msg, divtype, pType){
     msgContainer.appendChild(mainDiv);
 }
 
-function JoinedMsg(member){
+function JoiningMsg(member, type){
     let mainDiv = document.createElement("div");
     mainDiv.classList.add("joined", "msg");
 
     let markup = `
-        <h4>${member} joined the room.</h4>
+        <h4>${member} ${type} the room.</h4>
     `
 
     mainDiv.innerHTML = markup;
