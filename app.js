@@ -40,11 +40,11 @@ io.on('connection', socket => {
     socket.on('new-user-joined', codename => {
         users[socket.id] = codename;
         socket.broadcast.emit('member-joined', codename);
-        });
+    });
         
-        socket.on('send-chat-message', msg => {
-            socket.broadcast.emit('chat-message' ,msg);
-        });
+    socket.on('send-chat-message', msg => {
+        socket.broadcast.emit('chat-message' ,msg);
+    });
 });
 
 
