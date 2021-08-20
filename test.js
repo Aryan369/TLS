@@ -1,8 +1,8 @@
-const io = require("socket.io")(8000);
+const io = require("socket.io")(3000);
 
 const users = {};
 
-io.on('connect', socket => {
+io.on('connection', socket => {
     socket.on('new-user-joined', name => {
         console.log(name);
         users[socket.id] = name;
