@@ -100,9 +100,6 @@ const Register = (req, res) => {
             user.codename = codename;
             user.save();
 
-            //INFO
-            client_codename = user.codename;
-
             passport.authenticate("local")(req, res, function(){
                 res.redirect("/hq");
             });
@@ -122,9 +119,6 @@ const Login = (req, res) => {
             console.log(err);
         } else {
             passport.authenticate("local")(req, res, function(){
-                //INFO
-                client_codename = user.codename;
-
                 res.redirect("/hq");
             });
         }

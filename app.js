@@ -103,11 +103,6 @@ app.get('/dev', (req, res) => {
   res.send(`ID: ${generateTLSID.generate()}`);
 })
 
-
-//INFO FOR ROOMS
-let client_codename;
-module.exports = {client_codename};
-
 http.listen(PORT, function() {
   console.log(`Server started on port ${PORT}`);
 });
