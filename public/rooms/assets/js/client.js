@@ -7,7 +7,7 @@ const msgContainer = document.querySelector(".msg_area");
 
 //const codename = controller.codename();
 //console.log(console)
-//const codename = prompt("Enter your name");
+const codename = prompt("Enter your name");
 JoinedMsg("You");
 
 //Joining Info
