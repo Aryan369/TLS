@@ -27,8 +27,28 @@ const app = express();
 const http = require("http").createServer(app);
 
 //Socket.io
-const io = socketio(server).listen(server);
+const io = require("socket.io")(http, {
+  cors: {
+      origin: `http://localhost:${PORT}`,
+      methods: ["GET", "POST"]
+  }
+});
 
+const users = {};
+
+io.on('connection', socket => {
+    socket.on('new-user-joined', codename => {
+        users[socket.id] = codename;
+        socket.broadcast.emit('member-joined', codename);
+        });
+        
+        socket.on('send-chat-message', msg => {
+            socket.broadcast.emit('chat-message' ,msg);
+        });
+});
+
+
+//App Config
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({
@@ -57,14 +77,6 @@ mongoose.set("useCreateIndex", true);
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
 );
-
-app.get("/auth/google/secrets",
-  passport.authenticate('google', { failureRedirect: "/login" }),
-  function(req, res) {
-    // Successful authentication, redirect to secrets.
-    res.redirect("/secrets");
-});
-
 
 
 //REQUESTS
