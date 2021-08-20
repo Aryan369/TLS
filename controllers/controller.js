@@ -103,7 +103,7 @@ const Register = (req, res) => {
             user.save();
 
             //INFO
-            __codename = user.codename;
+            __codename = user.username;
 
             passport.authenticate("local")(req, res, function(){
                 res.redirect("/hq");
@@ -125,8 +125,7 @@ const Login = (req, res) => {
         } else {
             passport.authenticate("local")(req, res, function(){
                 //INFO
-                __codename = user.codename;
-                //console.log(__codename);
+                __codename = user.username;
                 
                 res.redirect("/hq");
             });
