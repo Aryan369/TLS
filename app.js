@@ -8,7 +8,11 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const socketio = require("socket.io");
 const generateTLSID = require("./generateTLS_ID");
-const User = require("./models/users");
+
+//INFO
+const controller = require("./controllers/controller");
+const _codename = controller;
+console.log(_codename);
 
 //Routes
 const HomepageRoute = require("./routes/homepage");
