@@ -18,7 +18,6 @@ msgform.addEventListener('submit', e =>{
     e.preventDefault();
     const message = msgInp.value;
     sendMsg(message);
-    //msgInp.value = "";
 });
 
 function appendMsg(msg, divtype, pType){
@@ -47,6 +46,7 @@ function sendMsg(message){
     }
 
     appendMsg(msg, "outgoing", "out");
+    msgInp.value = "";
     
     socket.emit('send-chat-message', msg);
 }
