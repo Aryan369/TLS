@@ -1,12 +1,12 @@
-const _codename = require("../../../../app");
+//const _codename = require("../../../../app");
 const socket = io();
 
 const msgform = document.getElementById('send-container');
 const msgInp = document.getElementById("msgInp");
 const msgContainer = document.querySelector(".msg_area");
 
-const codename = _codename;
-//const codename = prompt("Enter your name");
+//const codename = _codename;
+const codename = prompt("Enter your name");
 JoinedMsg("You");
 
 //Joining Info
