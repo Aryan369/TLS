@@ -6,8 +6,17 @@ const msgInp = document.getElementById("msgInp");
 const msgContainer = document.querySelector(".msg_area");
 
 //const codename = _codename;
-//const _name = prompt("Enter your name");
+const _name = prompt("Enter your name");
 JoinedMsg("You");
+
+//Joining Info
+socket.emit('new-user-joined', _name);
+
+socket.on('member-joined', codeName => {
+    JoinedMsg(codeName);
+});
+
+
 
 msgInp.addEventListener('keyup', e => {
     if(e.key === "Enter"){
