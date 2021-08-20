@@ -1,5 +1,3 @@
-const e = require("cors");
-
 //const _codename = require("./../../../../app");
 const socket = io("http://localhost:3000");
 

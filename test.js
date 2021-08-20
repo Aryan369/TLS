@@ -1,15 +1,12 @@
 const io = require("socket.io")(3000);
 
-const users = {};
-
 io.on('connection', socket => {
-    socket.on('new-user-joined', name => {
-        console.log(name);
-        users[socket.id] = name;
-        socket.broadcast.emit('member-joined', name);
-    });
+    //socket.on('new-user-joined', codename => {
+        //console.log(codename);
+        //users[socket.id] = codename;
+        //socket.broadcast.emit('member-joined', codename);
+    //});
 
-    socket.on('send', message => {
-        socket.broadcast.emit('receive', {message: message, codename: user[socket.id]});
-    });
+    console.log("user joined");
+    socket.emit('chat-message', "hello workd");
 })
