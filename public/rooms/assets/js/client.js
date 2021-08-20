@@ -1,14 +1,11 @@
-//const controller = require("../../../../controllers/controller");
 const socket = io();
 
 const msgform = document.getElementById('send-container');
 const msgInp = document.getElementById("msgInp");
 const msgContainer = document.querySelector(".msg_area");
 
-//const codename = controller.codename();
-//console.log(console)
 const codename = prompt("Enter your name");
-JoinedMsg("You");
+JoiningMsg("You", "joined");
 
 //Joining Info
 socket.emit('new-user-joined', codename);

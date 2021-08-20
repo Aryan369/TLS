@@ -51,7 +51,7 @@ io.on('connection', socket => {
     socket.on('disconnect', message => {
       socket.broadcast.emit('member-left', users[socket.id]);
       delete users[socket.id];
-    })
+    });
 });
 
 
