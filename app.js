@@ -11,7 +11,7 @@ const generateTLSID = require("./generateTLS_ID");
 
 //INFO
 const controller = require("./controllers/controller");
-const _codename = controller.__codename;
+const client_codename = controller.__codename;
 
 //Routes
 const HomepageRoute = require("./routes/homepage");
@@ -40,7 +40,7 @@ const io = require("socket.io")(http, {
 const users = {};
 
 io.on('connection', socket => {
-    //io.to(users[socket.id]).emit('get-codename', client_codename);
+    io.to(users[socket.id]).emit('get-codename', client_codename);
 
     socket.on('new-user-joined', codename => {
         users[socket.id] = codename;

@@ -7,8 +7,15 @@ const msgInp = document.getElementById("msgInp");
 const msgContainer = document.querySelector(".msg_area");
 const chatSection = document.querySelector(".chat_section");
 
-const codename = prompt("Enter your name");
+// const codename = prompt("Enter your name");
+let codename;
 JoiningMsg("You", "joined");
+
+//Getting Codename from Server
+socket.on('get-codename', codeName => {
+    codename = codeName;
+});
+
 
 //Joining Info
 socket.emit('new-user-joined', codename);
@@ -44,7 +51,7 @@ msgform.addEventListener('submit', e =>{
 //Send Messages
 function sendMsg(message){
     let msg = {
-        user: "codename",
+        user: codename,
         message: message.trim()
     }
 
