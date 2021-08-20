@@ -12,6 +12,12 @@ const msgContainer = document.querySelector(".msg_area");
 //     console.log(data);
 // });
 
+msgInp.addEventListener('keyup', e => {
+    if(e.key === "Enter"){
+        sendMsg(e.target.value);
+    }
+});
+
 msgform.addEventListener('submit', e =>{
     e.preventDefault();
     const message = msgInp.value;
