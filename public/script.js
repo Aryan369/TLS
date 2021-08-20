@@ -7,6 +7,7 @@ const msgContainer = document.querySelector(".msg_area");
 
 //const codename = _codename;
 //const _name = prompt("Enter your name");
+JoinedMsg("You");
 
 msgInp.addEventListener('keyup', e => {
     if(e.key === "Enter"){
@@ -51,6 +52,19 @@ function appendMsg(msg, divtype, pType){
     let markup = `
         <h4>${msg.user}</h4>
         <p class="${pType}">${msg.message}</p>
+    `
+
+    mainDiv.innerHTML = markup;
+    msgContainer.appendChild(mainDiv);
+}
+
+function JoinedMsg(member){
+    let mainDiv = document.createElement("div");
+    let divClass = divtype;
+    mainDiv.classList.add("joined", "msg");
+
+    let markup = `
+        <h4>${member} joined the room.</h4>
     `
 
     mainDiv.innerHTML = markup;
