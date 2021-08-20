@@ -1,23 +1,20 @@
 const express = require("express");
 const app = express();
-
-app.use(express.static("public"));
-app.use(require('cors')())
-
 const http = require("http").createServer(app);
-
 const io = require("socket.io")(http, {
     cors: {
-      origin: "http://localhost:4000",
-      methods: ["GET", "POST"],
-      allowedHeaders: ["my-custom-header"],
-      credentials: true
+        origin: "http://localhost:4000",
+        methods: ["GET", "POST"]
     }
-  });
+});
+
+app.use(express.static("public"));
 
 app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/test.html`);
 });
+
+
 
 http.listen(4000, function(){
     console.log("Successfully Connected Server");
