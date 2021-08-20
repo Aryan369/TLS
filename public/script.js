@@ -6,11 +6,7 @@ const msgInp = document.getElementById("msgInp");
 const msgContainer = document.querySelector(".msg_area");
 
 //const codename = _codename;
-//const _name = prompt("enter your name");
-
-// socket.on('chat-message', data => {
-//     console.log(data);
-// });
+//const _name = prompt("Enter your name");
 
 msgInp.addEventListener('keyup', e => {
     if(e.key === "Enter"){
@@ -25,17 +21,6 @@ msgform.addEventListener('submit', e =>{
     //msgInp.value = "";
 });
 
-function sendMsg(message){
-    let msg = {
-        user: "codename",
-        message: message.trim()
-    }
-
-    appendMsg(msg, "outgoing", "out");
-    
-    socket.emit('send-chat-message', msg);
-}
-
 function appendMsg(msg, divtype, pType){
     let mainDiv = document.createElement("div");
     let divClass = divtype;
@@ -49,3 +34,25 @@ function appendMsg(msg, divtype, pType){
     mainDiv.innerHTML = markup;
     msgContainer.appendChild(mainDiv);
 }
+
+
+
+
+//Send Messages
+
+function sendMsg(message){
+    let msg = {
+        user: "codename",
+        message: message.trim()
+    }
+
+    appendMsg(msg, "outgoing", "out");
+    
+    socket.emit('send-chat-message', msg);
+}
+
+//Receive Messages
+
+socket.on('chat-message', msg => {
+    appendMsg(msg, "incoming", "in");
+});

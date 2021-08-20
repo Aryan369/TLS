@@ -27,8 +27,8 @@ io.on('connection', socket => {
         //socket.broadcast.emit('member-joined', codename);
         //});
         
-        socket.on('send-chat-message', message => {
-            socket.broadcast.emit('chat-message' ,message);
+        socket.on('send-chat-message', msg => {
+            socket.broadcast.emit('chat-message' ,msg);
         });
 });
 
