@@ -37,6 +37,8 @@ const io = require("socket.io")(http, {
 const users = {};
 
 io.on('connection', socket => {
+    io.to(users[socket.id]).emit('get-codename', client_codename);
+
     socket.on('new-user-joined', codename => {
         users[socket.id] = codename;
         socket.broadcast.emit('member-joined', codename);
@@ -102,7 +104,6 @@ app.use("/login", LoginRoute);
 app.get('/dev', (req, res) => {
   res.send(`ID: ${generateTLSID.generate()}`);
 })
-
 
 
 
