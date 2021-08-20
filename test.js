@@ -5,7 +5,15 @@ app.use(express.static("public"));
 app.use(require('cors')())
 
 const http = require("http").createServer(app);
-const io = require("socket.io")(3000);
+
+const io = require("socket.io")(http, {
+    cors: {
+      origin: "http://localhost:4000",
+      methods: ["GET", "POST"],
+      allowedHeaders: ["my-custom-header"],
+      credentials: true
+    }
+  });
 
 app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/test.html`);
