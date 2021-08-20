@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3690;
 const uri = process.env.DB;
 
 const app = express();
-const server = require("http").createServer(app);
+const http = require("http").createServer(app);
 
 //Socket.io
 const io = socketio(server).listen(server);
@@ -136,6 +136,6 @@ app.get('/dev', (req, res) => {
 let client_codename;
 module.exports = client_codename;
 
-server.listen(PORT, function() {
+http.listen(PORT, function() {
   console.log(`Server started on port ${PORT}`);
 });
