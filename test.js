@@ -7,6 +7,7 @@ io.on('connection', socket => {
         //socket.broadcast.emit('member-joined', codename);
     //});
 
-    console.log("user joined");
-    socket.emit('chat-message', "hello workd");
+    socket.on('send-chat-message', message => {
+        socket.broadcast.emit('chat-message' ,message);
+    })
 })
