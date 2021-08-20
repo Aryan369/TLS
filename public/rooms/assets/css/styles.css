@@ -55,10 +55,12 @@ body {
   background-color: #e2eaeb;
   border-radius: 6px;
   padding: 16px;
+  font-size: 15px;
 }
 
 .out {
   background-color: #ebeff0;
   border-radius: 6px;
   padding: 16px;
+  font-size: 15px;
 }
