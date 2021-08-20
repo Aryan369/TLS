@@ -8,6 +8,8 @@ const generateTLSID = require("../generateTLS_ID");
 const User = require("../models/users");
 const rootDir = generateTLSID.rootDir;
 
+let __codename = 'dev';
+
 passport.use(User.createStrategy());
 
 passport.serializeUser(function(user, done) {
@@ -101,8 +103,7 @@ const Register = (req, res) => {
             user.save();
 
             //INFO
-            let client_codename = user.codename;
-            console.log(client_codename);
+            __codename = user.codename;
 
             passport.authenticate("local")(req, res, function(){
                 res.redirect("/hq");
@@ -124,8 +125,8 @@ const Login = (req, res) => {
         } else {
             passport.authenticate("local")(req, res, function(){
                 //INFO
-                let client_codename = user.codename;
-                console.log(client_codename);
+                __codename = user.codename;
+                //console.log(__codename);
                 
                 res.redirect("/hq");
             });
@@ -149,4 +150,4 @@ const Rooms = {
     }
 }
 
-module.exports = {Homepage, HomepageContact, HQ, Register, Login, Logout, Rooms};
+module.exports = {Homepage, HomepageContact, HQ, Register, Login, Logout, Rooms, __codename};
