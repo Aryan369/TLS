@@ -1,7 +1,7 @@
 //const _codename = require("./../../../../app");
 const socket = io(5500);
 
-const form = document.getElementById("send-form");
+const form = document.getElementById("send-container");
 const msgInp = document.getElementById("msgInp");
 const msgContainer = document.querySelector(".msg_area");
 
