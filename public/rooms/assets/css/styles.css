@@ -49,18 +49,35 @@ body {
   color: whitesmoke;
   padding-left: 8px;
   font-size: 14px;
+  font-family: 'Encode Sans SC', sans-serif;
 }
 
 .in {
   background-color: #e2eaeb;
   border-radius: 6px;
   padding: 16px;
-  font-size: 15px;
+  font-size: 13px;
+  font-family: 'Julius Sans One', sans-serif;
 }
 
 .out {
   background-color: #ebeff0;
   border-radius: 6px;
   padding: 16px;
-  font-size: 15px;
+  font-size: 13px;
+  font-family: 'Julius Sans One', sans-serif;
+
+}
+
+.joined {
+  border-radius: 6px;
+  padding: 16px;
+  margin: auto;
+}
+
+.joined h4{
+  color: #a6eb4d;
+  font-size: 12px;
+  font-weight: light;
+  font-family: 'Julius Sans One', sans-serif;
 }

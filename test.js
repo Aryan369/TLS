@@ -19,13 +19,13 @@ app.get('/', (req, res) => {
 
 //Socket.io
 
+const users = {};
 
 io.on('connection', socket => {
-    //socket.on('new-user-joined', codename => {
-        //console.log(codename);
-        //users[socket.id] = codename;
-        //socket.broadcast.emit('member-joined', codename);
-        //});
+    socket.on('new-user-joined', codename => {
+        users[socket.id] = codename;
+        socket.broadcast.emit('member-joined', codename);
+        });
         
         socket.on('send-chat-message', msg => {
             socket.broadcast.emit('chat-message' ,msg);
