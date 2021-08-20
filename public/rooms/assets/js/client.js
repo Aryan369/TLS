@@ -1,6 +1,6 @@
 const socket = io();
 
-const ting = new Audio("ting.mp3");
+var ting = new Audio("ting.mp3");
 
 const msgform = document.getElementById('send-container');
 const msgInp = document.getElementById("msgInp");
