@@ -60,7 +60,6 @@ function appendMsg(msg, divtype, pType){
 
 function JoinedMsg(member){
     let mainDiv = document.createElement("div");
-    let divClass = divtype;
     mainDiv.classList.add("joined", "msg");
 
     let markup = `
