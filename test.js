@@ -11,24 +11,31 @@ const io = require("socket.io")(http, {
 
 app.use(express.static("public"));
 
+
 app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/test.html`);
 });
 
 
-
-http.listen(PORT, function(){
-    console.log("Successfully Connected");
+//Socket.io
 
 io.on('connection', socket => {
     //socket.on('new-user-joined', codename => {
         //console.log(codename);
         //users[socket.id] = codename;
         //socket.broadcast.emit('member-joined', codename);
-    //});
-
-    socket.on('send-chat-message', message => {
-        socket.broadcast.emit('chat-message' ,message);
-    })
+        //});
+        
+        socket.on('send-chat-message', message => {
+            socket.broadcast.emit('chat-message' ,message);
+        });
 });
+
+
+
+
+
+http.listen(PORT, function(){
+    console.log("Successfully Connected");
+
 });
