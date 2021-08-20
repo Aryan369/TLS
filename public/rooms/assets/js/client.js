@@ -1,8 +1,11 @@
 const socket = io();
 
+const ting = new Audio("../audio/ting.mp3");
+
 const msgform = document.getElementById('send-container');
 const msgInp = document.getElementById("msgInp");
 const msgContainer = document.querySelector(".msg_area");
+const chatSection = document.querySelector(".chat_section");
 
 const codename = prompt("Enter your name");
 JoiningMsg("You", "joined");
@@ -67,6 +70,7 @@ function appendMsg(msg, divtype, pType){
 
     mainDiv.innerHTML = markup;
     msgContainer.appendChild(mainDiv);
+    ting.play();
 }
 
 function JoiningMsg(member, type){
@@ -82,5 +86,5 @@ function JoiningMsg(member, type){
 }
 
 function scrollToBottom() {
-    msgContainer.scrollTop = msgContainer.scrollHeight;
+    chatSection.scrollTop = chatSection.scrollHeight;
 }
