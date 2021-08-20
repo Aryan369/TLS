@@ -6,6 +6,7 @@ const session = require('express-session');
 const passport = require("passport");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+const socketio = require("socket.io");
 const generateTLSID = require("./generateTLS_ID");
 const User = require("./models/users");
 
@@ -23,7 +24,10 @@ const PORT = process.env.PORT || 3690;
 const uri = process.env.DB;
 
 const app = express();
-const http = require("http").createServer(app);
+const server = require("http").createServer(app);
+
+//Socket.io
+const io = socketio(server).listen(server);
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -132,6 +136,6 @@ app.get('/dev', (req, res) => {
 let client_codename;
 module.exports = client_codename;
 
-http.listen(PORT, function() {
+server.listen(PORT, function() {
   console.log(`Server started on port ${PORT}`);
 });
