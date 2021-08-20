@@ -20,6 +20,29 @@ msgform.addEventListener('submit', e =>{
     sendMsg(message);
 });
 
+
+//Send Messages
+function sendMsg(message){
+    let msg = {
+        user: "codename",
+        message: message.trim()
+    }
+
+    appendMsg(msg, "outgoing", "out");
+    msgInp.value = "";
+    scrollToBottom();
+    
+    socket.emit('send-chat-message', msg);
+}
+
+
+//Receive Messages
+socket.on('chat-message', msg => {
+    appendMsg(msg, "incoming", "in");
+    scrollToBottom();
+});
+
+
 function appendMsg(msg, divtype, pType){
     let mainDiv = document.createElement("div");
     let divClass = divtype;
@@ -34,25 +57,6 @@ function appendMsg(msg, divtype, pType){
     msgContainer.appendChild(mainDiv);
 }
 
-
-
-
-//Send Messages
-
-function sendMsg(message){
-    let msg = {
-        user: "codename",
-        message: message.trim()
-    }
-
-    appendMsg(msg, "outgoing", "out");
-    msgInp.value = "";
-    
-    socket.emit('send-chat-message', msg);
+function scrollToBottom() {
+    msgContainer.scrollTop = msgContainer.scrollHeight;
 }
-
-//Receive Messages
-
-socket.on('chat-message', msg => {
-    appendMsg(msg, "incoming", "in");
-});
