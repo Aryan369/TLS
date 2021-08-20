@@ -1,6 +1,6 @@
 const socket = io();
 
-const ting = new Audio("../audio/ting.mp3");
+const ting = new Audio("ting.mp3");
 
 const msgform = document.getElementById('send-container');
 const msgInp = document.getElementById("msgInp");
@@ -24,15 +24,20 @@ socket.on('member-left', codeName => {
 
 
 msgInp.addEventListener('keyup', e => {
-    if(e.key === "Enter"){
-        sendMsg(e.target.value);
+    if(e.target.value != ""){
+        if(e.key === "Enter"){
+            sendMsg(e.target.value);
+        }
     }
+    
 });
 
 msgform.addEventListener('submit', e =>{
     e.preventDefault();
     const message = msgInp.value;
-    sendMsg(message);
+    if(message != ""){
+        sendMsg(message);
+    }
 });
 
 
