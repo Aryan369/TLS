@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 
 http.listen(4000, function(){
-    console.log("Successfully Connected Server");
+    console.log("Successfully Connected");
 
 io.on('connection', socket => {
     //socket.on('new-user-joined', codename => {

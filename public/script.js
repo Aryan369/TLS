@@ -1,5 +1,5 @@
 //const _codename = require("./../../../../app");
-const socket = io("http://localhost:4000");
+const socket = io();
 
 const msgform = document.getElementById('send-container');
 const msgInp = document.getElementById("msgInp");
