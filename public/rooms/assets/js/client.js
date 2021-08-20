@@ -54,6 +54,7 @@ function sendMsg(message){
 //Receive Messages
 socket.on('chat-message', msg => {
     appendMsg(msg, "incoming", "in");
+    ting.play();
     scrollToBottom();
 });
 
@@ -70,7 +71,6 @@ function appendMsg(msg, divtype, pType){
 
     mainDiv.innerHTML = markup;
     msgContainer.appendChild(mainDiv);
-    ting.play();
 }
 
 function JoiningMsg(member, type){
