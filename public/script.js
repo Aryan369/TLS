@@ -8,9 +8,9 @@ const msgContainer = document.querySelector(".msg_area");
 //const codename = _codename;
 //const _name = prompt("enter your name");
 
-socket.on('chat-message', data => {
-    console.log(data);
-});
+// socket.on('chat-message', data => {
+//     console.log(data);
+// });
 
 msgform.addEventListener('submit', e =>{
     e.preventDefault();
@@ -22,7 +22,7 @@ msgform.addEventListener('submit', e =>{
 
 function sendMsg(message){
     let msg = {
-        user: codename,
+        user: "codename",
         message: message
     }
 
