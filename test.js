@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
 const http = require("http").createServer(app);
+const PORT = process.env.PORT || 4000;
 const io = require("socket.io")(http, {
     cors: {
-        origin: "http://localhost:4000",
+        origin: `http://localhost:${PORT}`,
         methods: ["GET", "POST"]
     }
 });
@@ -16,7 +17,7 @@ app.get('/', (req, res) => {
 
 
 
-http.listen(4000, function(){
+http.listen(PORT, function(){
     console.log("Successfully Connected");
 
 io.on('connection', socket => {
