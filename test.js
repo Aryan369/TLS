@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 
 //Socket.io
 
+
 io.on('connection', socket => {
     //socket.on('new-user-joined', codename => {
         //console.log(codename);
@@ -30,7 +31,6 @@ io.on('connection', socket => {
             socket.broadcast.emit('chat-message' ,message);
         });
 });
-
 
 
 
