@@ -11,7 +11,7 @@ const generateTLSID = require("./generateTLS_ID");
 //INFO
 const controller = require("./controllers/controller");
 const client_codename = controller.__codename;
-module.exports = {client_codename};
+app.use("/getCodename", CodenameRoute);
 
 //Routes
 const HomepageRoute = require("./routes/homepage");
@@ -21,6 +21,7 @@ const RegisterRoute = require("./routes/register");
 const LoginRoute = require("./routes/login");
 const LogoutRoute = require("./routes/logout");
 const RoomsRoute = require("./routes/rooms");
+const CodenameRoute = require("./routes/codename");
 
 const PORT = process.env.PORT || 3690;
 

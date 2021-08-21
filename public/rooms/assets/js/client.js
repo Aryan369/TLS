@@ -17,11 +17,12 @@ body.onload = getCodename();
 function getCodename() {
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'getCodename.js', false);
+    xhr.open('GET', '/getCodename', false);
 
     xhr.onload = () => {
         if(this.staus === 200){
-            alert(this.responseText);
+            let obj = JSON.parse(this.responseText);
+            alert(obj);
         } else {
             console.error(this.error);
         }
