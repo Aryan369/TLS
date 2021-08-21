@@ -11,8 +11,6 @@ const chatSection = document.querySelector(".chat_section");
 const _codename = document.getElementById("codename");
 let codename = _codename.innerText;
 
-alert(codename);
-
 
 
 //Joining Info
