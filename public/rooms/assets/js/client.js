@@ -1,6 +1,6 @@
 const socket = io();
 
-var ting = new Audio("ting.mp3");
+let ting = document.getElementById("ting");
 
 const msgform = document.getElementById('send-container');
 const msgInp = document.getElementById("msgInp");
@@ -11,7 +11,7 @@ const chatSection = document.querySelector(".chat_section");
 let codename;
 JoiningMsg("You", "joined");
 
-//Getting Codename from Server
+// Getting Codename from Server
 socket.on('get-codename', codeName => {
     codename = codeName;
 });
@@ -31,18 +31,17 @@ socket.on('member-left', codeName => {
 
 
 msgInp.addEventListener('keyup', e => {
-    if(e.target.value != ""){
+    if(msgInp.value.trim() != ''){
         if(e.key === "Enter"){
             sendMsg(e.target.value);
         }
     }
-    
 });
 
 msgform.addEventListener('submit', e =>{
     e.preventDefault();
     const message = msgInp.value;
-    if(message != ""){
+    if(msgInp.value.trim() != ''){
         sendMsg(message);
     }
 });
@@ -58,7 +57,7 @@ function sendMsg(message){
     appendMsg(msg, "outgoing", "out");
     msgInp.value = "";
     scrollToBottom();
-    
+
     socket.emit('send-chat-message', msg);
 }
 

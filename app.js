@@ -6,7 +6,6 @@ const session = require('express-session');
 const passport = require("passport");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
-const socketio = require("socket.io");
 const generateTLSID = require("./generateTLS_ID");
 
 //INFO
@@ -40,7 +39,7 @@ const io = require("socket.io")(http, {
 const users = {};
 
 io.on('connection', socket => {
-    io.to(users[socket.id]).emit('get-codename', client_codename);
+    io.to(socket.id).emit('get-codename', "client_codename");
 
     socket.on('new-user-joined', codename => {
         users[socket.id] = codename;
@@ -87,7 +86,6 @@ mongoose.set("useCreateIndex", true);
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
 );
-
 
 //REQUESTS
 app.use("/", HomepageRoute);
