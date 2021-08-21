@@ -62,7 +62,7 @@ function sendMsg(message){
 //Receive Messages
 socket.on('chat-message', msg => {
     appendMsg(msg, "incoming", "in");
-    ting.play();
+    //ting.play();
     scrollToBottom();
 });
 
