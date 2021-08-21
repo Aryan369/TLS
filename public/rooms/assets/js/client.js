@@ -12,8 +12,13 @@ let codename;
 
 // Getting Codename from Server
 const body = document.getElementById("body_codename");
-body.addEventListener('onload', getCodename);
+body.onload = getCodename();
 
+function getCodename() {
+    //alert("loaded");
+
+    const xhr = new XMLHttpRequest();
+}
 
 
 //Joining Info
