@@ -24,7 +24,11 @@ function getCodename() {
     xhr.send();
 
     xhr.onload = () => {
-        alert(this.responseText);
+        if(this.staus === 200){
+            alert(this.responseText);
+        } else {
+            console.error(this.error);
+        }
     }
 }
 
