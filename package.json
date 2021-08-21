@@ -20,7 +20,7 @@
     "socket.io-client": "^4.1.3"
   },
   "scripts": {
-    "app": "nodemon app"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "TheLightSystem",
