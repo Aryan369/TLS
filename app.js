@@ -16,7 +16,6 @@ const RegisterRoute = require("./routes/register");
 const LoginRoute = require("./routes/login");
 const LogoutRoute = require("./routes/logout");
 const RoomsRoute = require("./routes/rooms");
-const CodenameRoute = require("./routes/codename");
 
 const PORT = process.env.PORT || 3690;
 
@@ -25,8 +24,6 @@ const uri = process.env.DB;
 const app = express();
 const http = require("http").createServer(app);
 
-//INFO
-app.use("/rooms/getCodename", CodenameRoute);
 
 //Socket.io
 const io = require("socket.io")(http, {

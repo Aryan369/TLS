@@ -11,26 +11,26 @@ const chatSection = document.querySelector(".chat_section");
 let codename;
 
 // Getting Codename from Server
-const body = document.getElementById("body_codename");
-body.onload = getCodename();
+// const body = document.getElementById("body_codename");
+// body.onload = getCodename();
 
-function getCodename() {
-    const xhr = new XMLHttpRequest();
+// function getCodename() {
+//     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', '/rooms/getCodename', false);
+//     xhr.open('GET', '/rooms/getCodename', false);
 
-    xhr.onload = () => {
-        if(this.staus === 200){
-            let obj = JSON.parse(this.responseText);
-            codename = JSON.stringify(obj);
-            //alert(obj);
-        } else {
-            console.error(this.error);
-        }
-    }
+//     xhr.onload = () => {
+//         if(this.staus === 200){
+//             let obj = JSON.parse(this.responseText);
+//             codename = JSON.stringify(obj);
+//             //alert(obj);
+//         } else {
+//             console.error(this.error);
+//         }
+//     }
 
-    xhr.send();
-}
+//     xhr.send();
+// }
 
 
 //Joining Info

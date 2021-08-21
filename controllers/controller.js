@@ -140,20 +140,11 @@ const Logout = (req, res) => {
 const Rooms = {
     Get: (req, res) => {
         //if (req.isAuthenticated()){
-        res.render("rooms");
+        res.render("rooms", {_codename: __codename});
         //} else {
         //  res.status(404).send('Bad Request: Not Found');
         //}
     }
 }
 
-const getCodename = (req, res) => {
-    //if (req.isAuthenticated()){
-        //let j_codename = JSON.parse(__codename);
-        res.send("__codename");
-    //} else {
-    //  res.status(404).send('Bad Request: Not Found');
-    //}
-}
-
-module.exports = {Homepage, HomepageContact, HQ, Register, Login, Logout, Rooms, getCodename};
+module.exports = {Homepage, HomepageContact, HQ, Register, Login, Logout, Rooms};
