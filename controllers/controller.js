@@ -139,11 +139,11 @@ const Logout = (req, res) => {
 
 const Rooms = {
     Get: (req, res) => {
-        //if (req.isAuthenticated()){
+        if (req.isAuthenticated()){
         res.render("rooms", {_codename: __codename});
-        //} else {
-        //  res.status(404).send('Bad Request: Not Found');
-        //}
+        } else {
+         res.status(404).send('Bad Request: Not Found');
+        }
     }
 }
 
