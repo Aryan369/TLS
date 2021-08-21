@@ -8,9 +8,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const generateTLSID = require("./generateTLS_ID");
 
-//INFO
-app.use("/getCodename", CodenameRoute);
-
 //Routes
 const HomepageRoute = require("./routes/homepage");
 const HomepageContactRoute = require("./routes/homepageContact");
@@ -27,6 +24,9 @@ const uri = process.env.DB;
 
 const app = express();
 const http = require("http").createServer(app);
+
+//INFO
+app.use("/getCodename", CodenameRoute);
 
 //Socket.io
 const io = require("socket.io")(http, {
