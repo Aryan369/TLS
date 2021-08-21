@@ -8,29 +8,9 @@ const msgContainer = document.querySelector(".msg_area");
 const chatSection = document.querySelector(".chat_section");
 
 // const codename = prompt("Enter your name");
-let codename;
+const _codename = document.getElementById("_codename");
+let codename = _codename.value;
 
-// Getting Codename from Server
-// const body = document.getElementById("body_codename");
-// body.onload = getCodename();
-
-// function getCodename() {
-//     const xhr = new XMLHttpRequest();
-
-//     xhr.open('GET', '/rooms/getCodename', false);
-
-//     xhr.onload = () => {
-//         if(this.staus === 200){
-//             let obj = JSON.parse(this.responseText);
-//             codename = JSON.stringify(obj);
-//             //alert(obj);
-//         } else {
-//             console.error(this.error);
-//         }
-//     }
-
-//     xhr.send();
-// }
 
 
 //Joining Info
