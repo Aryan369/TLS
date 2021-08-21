@@ -8,8 +8,10 @@ const msgContainer = document.querySelector(".msg_area");
 const chatSection = document.querySelector(".chat_section");
 
 // const codename = prompt("Enter your name");
-const _codename = document.getElementById("_codename");
+const _codename = document.getElementById("codename");
 let codename = _codename.value;
+
+alert(codename);
 
 
 

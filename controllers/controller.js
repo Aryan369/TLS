@@ -66,7 +66,10 @@ const HQ = (req, res) => {
                 if(foundUser){
                     const codename = foundUser.codename;
                     const tlsid = foundUser.TLS_ID;
-                    let rank = "";
+                    let rank = ""; 
+
+                    //INFO
+                    __codename = foundUser.username;
 
                     //Rank
                     if(tlsid == 1){
@@ -101,9 +104,6 @@ const Register = (req, res) => {
             user.codename = codename;
             user.save();
 
-            //INFO
-            __codename = user.username;
-
             passport.authenticate("local")(req, res, function(){
                 res.redirect("/hq");
             });
@@ -123,9 +123,6 @@ const Login = (req, res) => {
             console.log(err);
         } else {
             passport.authenticate("local")(req, res, function(){
-                //INFO
-                __codename = user.username;
-                
                 res.redirect("/hq");
             });
         }
@@ -140,7 +137,8 @@ const Logout = (req, res) => {
 const Rooms = {
     Get: (req, res) => {
         if (req.isAuthenticated()){
-        res.render("rooms", {_codename: __codename});
+        // res.render("rooms", {codename: __codename});
+        res.render("rooms");
         } else {
          res.status(404).send('404: Not Found');
         }
