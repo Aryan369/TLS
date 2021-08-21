@@ -66,10 +66,7 @@ const HQ = (req, res) => {
                 if(foundUser){
                     const codename = foundUser.codename;
                     const tlsid = foundUser.TLS_ID;
-                    let rank = ""; 
-
-                    //INFO
-                    __codename = foundUser.username;
+                    let rank = "";
 
                     //Rank
                     if(tlsid == 1){
@@ -137,9 +134,20 @@ const Logout = (req, res) => {
 const Rooms = {
     Get: (req, res) => {
         if (req.isAuthenticated()){
-        res.render("rooms", {codename: __codename});
+            User.findById(req.user.id, (err, foundUser) =>{
+                if(err){
+                    console.log(err);
+                }else{
+                    if(foundUser){
+                        const codename = foundUser.codename;
+                        const tlsid = foundUser.TLS_ID;
+    
+                        res.render("rooms", {codename: codename + tlsid});
+                    }
+                }
+            });
         } else {
-         res.status(404).send('404: Not Found');
+            res.status(404).send('404: Not Found');
         }
     }
 }
