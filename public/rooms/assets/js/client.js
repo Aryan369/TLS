@@ -9,7 +9,7 @@ const chatSection = document.querySelector(".chat_section");
 
 // const codename = prompt("Enter your name");
 const _codename = document.getElementById("codename");
-let codename = _codename.value;
+let codename = _codename.innerText;
 
 alert(codename);
 
