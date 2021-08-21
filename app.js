@@ -11,6 +11,7 @@ const generateTLSID = require("./generateTLS_ID");
 //INFO
 const controller = require("./controllers/controller");
 const client_codename = controller.__codename;
+module.exports = {client_codename};
 
 //Routes
 const HomepageRoute = require("./routes/homepage");
