@@ -18,6 +18,14 @@ function getCodename() {
     //alert("loaded");
 
     const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'getCodename.js', false);
+
+    xhr.send();
+
+    xhr.onload = () => {
+        alert(this.responseText);
+    }
 }
 
 
