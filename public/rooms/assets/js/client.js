@@ -17,7 +17,7 @@ body.onload = getCodename();
 function getCodename() {
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', '/getCodename', false);
+    xhr.open('GET', 'app.js', false);
 
     xhr.onload = () => {
         if(this.staus === 200){
