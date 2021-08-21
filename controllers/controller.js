@@ -147,4 +147,12 @@ const Rooms = {
     }
 }
 
-module.exports = {Homepage, HomepageContact, HQ, Register, Login, Logout, Rooms};
+const getCodename = (req, res) => {
+    if (req.isAuthenticated()){
+        res.send(__codename);
+    } else {
+      res.status(404).send('Bad Request: Not Found');
+    }
+}
+
+module.exports = {Homepage, HomepageContact, HQ, Register, Login, Logout, Rooms, getCodename};

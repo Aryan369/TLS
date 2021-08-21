@@ -9,8 +9,6 @@ const findOrCreate = require('mongoose-findorcreate');
 const generateTLSID = require("./generateTLS_ID");
 
 //INFO
-const controller = require("./controllers/controller");
-const client_codename = controller.__codename;
 app.use("/getCodename", CodenameRoute);
 
 //Routes
