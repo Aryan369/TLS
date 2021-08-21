@@ -142,7 +142,7 @@ const Rooms = {
                         const codename = foundUser.codename;
                         const tlsid = foundUser.TLS_ID;
     
-                        res.render("rooms", {codename: codename + tlsid});
+                        res.render("rooms", {codename: codename});
                     }
                 }
             });
