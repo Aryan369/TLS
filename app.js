@@ -26,7 +26,7 @@ const app = express();
 const http = require("http").createServer(app);
 
 //INFO
-app.use("/getCodename", CodenameRoute);
+app.use("/rooms/getCodename", CodenameRoute);
 
 //Socket.io
 const io = require("socket.io")(http, {

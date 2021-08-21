@@ -150,7 +150,7 @@ const Rooms = {
 const getCodename = (req, res) => {
     //if (req.isAuthenticated()){
         //let j_codename = JSON.parse(__codename);
-        res.send(__codename);
+        res.send("__codename");
     //} else {
     //  res.status(404).send('Bad Request: Not Found');
     //}
