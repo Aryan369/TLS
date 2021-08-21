@@ -84,7 +84,7 @@ const HQ = (req, res) => {
             }
         });
     } else {
-        res.status(404).send('Bad Request: Not Found');
+        res.status(404).send('404: Not Found');
     }
 }
 
@@ -142,7 +142,7 @@ const Rooms = {
         if (req.isAuthenticated()){
         res.render("rooms", {_codename: __codename});
         } else {
-         res.status(404).send('Bad Request: Not Found');
+         res.status(404).send('404: Not Found');
         }
     }
 }
