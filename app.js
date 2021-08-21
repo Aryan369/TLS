@@ -39,8 +39,6 @@ const io = require("socket.io")(http, {
 const users = {};
 
 io.on('connection', socket => {
-    io.to(socket.id).emit('get-codename', "client_codename");
-
     socket.on('new-user-joined', codename => {
         users[socket.id] = codename;
         socket.broadcast.emit('member-joined', codename);
