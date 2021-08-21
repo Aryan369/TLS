@@ -9,15 +9,15 @@ const chatSection = document.querySelector(".chat_section");
 
 // const codename = prompt("Enter your name");
 let codename;
-JoiningMsg("You", "joined");
 
 // Getting Codename from Server
-socket.on('get-codename', codeName => {
-    codename = codeName;
-});
+const body = document.getElementById("body_codename");
+body.addEventListener('onload', getCodename);
+
 
 
 //Joining Info
+JoiningMsg("You", "joined");
 socket.emit('new-user-joined', codename);
 
 socket.on('member-joined', codeName => {
