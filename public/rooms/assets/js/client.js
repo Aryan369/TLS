@@ -15,13 +15,9 @@ const body = document.getElementById("body_codename");
 body.onload = getCodename();
 
 function getCodename() {
-    //alert("loaded");
-
     const xhr = new XMLHttpRequest();
 
     xhr.open('GET', 'getCodename.js', false);
-
-    xhr.send();
 
     xhr.onload = () => {
         if(this.staus === 200){
@@ -30,6 +26,8 @@ function getCodename() {
             console.error(this.error);
         }
     }
+
+    xhr.send();
 }
 
 
